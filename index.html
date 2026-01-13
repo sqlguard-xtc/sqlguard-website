@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SqlGuard — deterministic, CI-first CLI validation for SQL Server behavior." />
+
+  <title>SqlGuard</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/mark.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Social preview (optional but nice) -->
+  <meta property="og:title" content="SqlGuard" />
+  <meta property="og:description" content="Deterministic, CI-first CLI validation for SQL Server behavior after schema/data changes." />
+  <meta property="og:type" content="website" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/img/mark.svg" alt="" width="28" height="28" />
+        <span class="brand-name">SqlGuard</span>
+      </div>
+      <nav class="nav">
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Deterministic SQL validation for CI.</h1>
+          <p class="lead">
+            SqlGuard is a commercial, non-SaaS CLI tool that validates SQL Server behavior after schema or data changes —
+            focused on correctness, security, and regression prevention.
+          </p>
+
+          <div class="pill-row" aria-label="Key properties">
+            <span class="pill">CI-first</span>
+            <span class="pill">Offline-capable</span>
+            <span class="pill">No agents</span>
+            <span class="pill">No SaaS</span>
+            <span class="pill">Deterministic output</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" id="docs" href="https://github.com/sqlguard-xtc/sqlguard#readme">Read docs</a>
+            <a class="btn" id="download" href="https://github.com/sqlguard-xtc/sqlguard/releases">Download releases</a>
+          </div>
+
+          <p class="subtle">
+            Prefer GitHub? Everything publicly visible lives in the
+            <a href="https://github.com/sqlguard-xtc/sqlguard">sqlguard</a> repository:
+            documentation, examples, and release binaries.
+          </p>
+        </div>
+
+        <div class="hero-card" role="region" aria-label="Quick start">
+          <div class="card">
+            <div class="card-head">
+              <span class="card-title">Quick start</span>
+              <span class="badge">CLI</span>
+            </div>
+
+            <p class="card-text">
+              Download the latest release, put <code>sqlguard</code> on your PATH, then run:
+            </p>
+
+            <pre class="code" aria-label="Quick start commands"><code>sqlguard validate-spec --spec sqlguard.yaml
+sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
+
+            <p class="card-text">
+              Exit codes are stable for CI: <code>0</code>=pass, <code>1</code>=validation fail,
+              <code>2</code>=spec error, <code>3</code>=runtime error.
+            </p>
+
+            <div class="card-links">
+              <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs">Documentation</a>
+              <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs/examples">Examples</a>
+              <a href="https://github.com/sqlguard-xtc/sqlguard/releases">Releases</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>What SqlGuard is (and isn’t)</h2>
+        <div class="grid two">
+          <div class="panel">
+            <h3>It is</h3>
+            <ul>
+              <li>A deterministic CLI gate for SQL Server / Azure SQL changes</li>
+              <li>Designed for build pipelines and offline execution</li>
+              <li>Focused on correctness, security checks, and regression prevention</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>It isn’t</h3>
+            <ul>
+              <li>A hosted SaaS service</li>
+              <li>A dashboard or monitoring/observability agent</li>
+              <li>A general-purpose query runner or ORM migration tool</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="subtle">Commercial and security contact channels for SqlGuard.</p>
+
+        <div class="grid three">
+          <div class="panel">
+            <h3>Licensing</h3>
+            <p><a href="mailto:sales@sqlguard.dev">sales@sqlguard.dev</a></p>
+            <button class="btn small" data-copy="sales@sqlguard.dev" type="button">Copy</button>
+          </div>
+          <div class="panel">
+            <h3>Support</h3>
+            <p><a href="mailto:support@sqlguard.dev">support@sqlguard.dev</a></p>
+            <button class="btn small" data-copy="support@sqlguard.dev" type="button">Copy</button>
+          </div>
+          <div class="panel">
+            <h3>Security</h3>
+            <p><a href="mailto:security@sqlguard.dev">security@sqlguard.dev</a></p>
+            <button class="btn small" data-copy="security@sqlguard.dev" type="button">Copy</button>
+          </div>
+        </div>
+
+        <p class="tiny subtle">
+          Vulnerabilities: please email <a href="mailto:security@sqlguard.dev">security@sqlguard.dev</a> instead of opening public issues.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span class="tiny">© <span id="y"></span> SqlGuard</span>
+        <span class="tiny">
+          <a href="https://github.com/sqlguard-xtc/sqlguard">GitHub</a> ·
+          <a href="https://github.com/sqlguard-xtc/sqlguard/releases">Releases</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // tiny helpers (no deps)
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    document.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const v = btn.getAttribute("data-copy");
+        try {
+          await navigator.clipboard.writeText(v);
+          const prev = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(() => (btn.textContent = prev), 1200);
+        } catch {
+          // fallback: select+copy (rarely needed)
+          const ta = document.createElement("textarea");
+          ta.value = v;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
