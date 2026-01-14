@@ -23,7 +23,7 @@ body{
   margin:0;
   font-family: var(--sans);
   color: var(--text);
-  background: radial-gradient(1200px 700px at 25% 0%, #0f172a 0%, var(--bg) 40%);
+  background: var(--bg);
   line-height:1.5;
 }
 
