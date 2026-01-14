@@ -63,15 +63,12 @@ a:focus-visible{
 .header-inner{
   display:flex;
   align-items:center;
-  justify-content:space-between;
   padding:14px 0;
-  gap:16px;
 }
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
-  min-width: 180px;
 }
 .brand-mark{
   display:block;
@@ -81,106 +78,6 @@ a:focus-visible{
 .brand-name{
   font-weight:700;
   letter-spacing:0.2px;
-}
-
-.mobile-menu-toggle{
-  display:none;
-  background:none;
-  border:none;
-  padding:8px;
-  cursor:pointer;
-  position:relative;
-  width:40px;
-  height:40px;
-  border-radius:8px;
-  transition: background 0.2s;
-}
-.mobile-menu-toggle:hover{
-  background: rgba(48,54,61,0.35);
-}
-.mobile-menu-toggle:focus-visible{
-  outline: 2px solid var(--link);
-  outline-offset: 2px;
-}
-.hamburger{
-  display:block;
-  position:relative;
-  width:20px;
-  height:2px;
-  background: var(--text);
-  margin:0 auto;
-  transition: background 0.2s;
-}
-.hamburger::before,
-.hamburger::after{
-  content:'';
-  position:absolute;
-  width:20px;
-  height:2px;
-  background: var(--text);
-  left:0;
-  transition: transform 0.2s, top 0.2s, bottom 0.2s;
-}
-.hamburger::before{ top:-6px; }
-.hamburger::after{ bottom:-6px; }
-.mobile-menu-toggle.active .hamburger{
-  background:transparent;
-}
-.mobile-menu-toggle.active .hamburger::before{
-  top:0;
-  transform:rotate(45deg);
-}
-.mobile-menu-toggle.active .hamburger::after{
-  bottom:0;
-  transform:rotate(-45deg);
-}
-
-@media (max-width: 768px){
-  .mobile-menu-toggle{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .nav{
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    background: rgba(13,17,23,0.98);
-    border-bottom: 1px solid var(--border);
-    flex-direction:column;
-    padding:12px 0;
-    gap:0;
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-  }
-  .nav.active{
-    max-height:300px;
-    opacity:1;
-    padding:12px 0;
-  }
-  .nav a{
-    padding:12px 20px;
-    display:block;
-    border-radius:0;
-  }
-}
-
-.nav{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-.nav a{
-  color: var(--text);
-  padding:6px 8px;
-  border-radius:8px;
-}
-.nav a:hover{
-  background: rgba(48,54,61,0.35);
-  text-decoration:none;
 }
 
 .hero{

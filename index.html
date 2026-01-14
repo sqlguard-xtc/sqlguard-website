@@ -28,15 +28,6 @@
         <img class="brand-mark" src="assets/img/mark.svg" alt="SqlGuard logo" width="28" height="28" loading="eager" />
         <span class="brand-name">SqlGuard</span>
       </div>
-      <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav">
-        <a href="#how">How it works</a>
-        <a href="#docs">Docs</a>
-        <a href="#download">Download</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </div>
   </header>
 
@@ -60,8 +51,8 @@
           </div>
 
           <div class="cta-row">
-            <a class="btn primary" id="docs" href="https://github.com/sqlguard-xtc/sqlguard#readme">Read docs</a>
-            <a class="btn" id="download" href="https://github.com/sqlguard-xtc/sqlguard/releases">
+            <a class="btn primary" href="https://github.com/sqlguard-xtc/sqlguard#readme">Read docs</a>
+            <a class="btn" href="https://github.com/sqlguard-xtc/sqlguard/releases">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                 <path d="M8.75 1.75a.75.75 0 00-1.5 0v6.69L4.22 5.47a.75.75 0 00-1.06 1.06l4.25 4.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 00-1.06-1.06L8.75 8.44V1.75z"/>
                 <path d="M2.5 11.5a.75.75 0 01.75.75v1.25c0 .138.112.25.25.25h9c.138 0 .25-.112.25-.25V12.25a.75.75 0 011.5 0v1.25A1.75 1.75 0 0112.5 15h-9A1.75 1.75 0 011.75 13.25V12.25a.75.75 0 01.75-.75z"/>
@@ -288,28 +279,6 @@ Exit code: 0</code></pre>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const nav = document.querySelector('.nav');
-    
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isOpen);
-        menuToggle.classList.toggle('active');
-        nav.classList.toggle('active');
-      });
-
-      // Close menu when clicking nav links
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.setAttribute('aria-expanded', 'false');
-          menuToggle.classList.remove('active');
-          nav.classList.remove('active');
-        });
-      });
-    }
 
     // Copy functionality for all buttons with data-copy
     document.querySelectorAll("[data-copy]").forEach(btn => {
