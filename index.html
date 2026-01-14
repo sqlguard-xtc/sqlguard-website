@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="SqlGuard — deterministic, CI-first CLI validation for SQL Server behavior." />
-
   <title>SqlGuard</title>
 
   <!-- Canonical (www is canonical) -->
@@ -39,8 +38,9 @@
   </header>
 
   <main id="main">
+    <!-- HERO (balanced, no tall right column) -->
     <section class="hero">
-      <div class="container hero-inner">
+      <div class="container hero-inner hero-inner--compact">
         <div class="hero-copy">
           <h1>Deterministic SQL validation for CI.</h1>
           <p class="lead">
@@ -68,64 +68,27 @@
           </p>
 
           <p class="tiny subtle">
-            Tip: start with <a href="#how">How it works</a> — YAML expectations → CLI run → CI pass/fail.
+            New here? Jump to <a href="#how">How it works</a> — YAML expectations → CLI run → CI pass/fail.
           </p>
         </div>
 
-        <!-- RIGHT CARD: How it works (Step 1-2-3) -->
-        <div class="hero-card" role="region" aria-label="How it works">
+        <!-- Small right card (keeps hero height similar to left) -->
+        <div class="hero-card" role="region" aria-label="Quick start">
           <div class="card">
             <div class="card-head">
-              <span class="card-title">How it works</span>
-              <span class="badge">Step 1 → 2 → 3</span>
+              <span class="card-title">Quick start</span>
+              <span class="badge">CLI</span>
             </div>
-
-            <ol class="steps" id="how" aria-label="SqlGuard workflow">
-              <li class="step">
-                <div class="step-head">
-                  <span class="step-title">Step 1 — Declare expectations (YAML)</span>
-                  <span class="step-meta">spec</span>
-                </div>
-                <p class="card-text">
-                  Describe what must remain true about your database behavior (shape, invariants, permissions).
-                </p>
-                <pre class="code" aria-label="YAML example"><code># sqlguard.yaml (excerpt)
-suites:
-  - name: Orders schema
-    connection: main
-    checks:
-      - type: queryContract
-        sql: SELECT * FROM Orders</code></pre>
-              </li>
-
-              <li class="step">
-                <div class="step-head">
-                  <span class="step-title">Step 2 — Run in CI (CLI)</span>
-                  <span class="step-meta">execute</span>
-                </div>
-                <p class="card-text">
-                  Run locally or in pipelines. Output is deterministic and machine-readable.
-                </p>
-                <pre class="code" aria-label="CLI example"><code>sqlguard validate-spec --spec sqlguard.yaml
+            <p class="card-text">
+              Validate your spec, then run the suite:
+            </p>
+            <pre class="code" aria-label="Quick start commands"><code>sqlguard validate-spec --spec sqlguard.yaml
 sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
-              </li>
 
-              <li class="step">
-                <div class="step-head">
-                  <span class="step-title">Step 3 — CI sees pass/fail</span>
-                  <span class="step-meta">gate</span>
-                </div>
-                <p class="card-text">
-                  SqlGuard exits with stable codes for pipelines. Your CI treats it like tests.
-                  (<a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs#exit-codes">exit codes</a>)
-                </p>
-                <pre class="code" aria-label="CI-style output example"><code>✔ Orders schema
-  ✔ queryContract: Orders columns unchanged
-
-Test Suites: 1 passed, 0 failed
-Exit code: 0</code></pre>
-              </li>
-            </ol>
+            <p class="card-text">
+              Stable CI exit codes:
+              <code>0</code>=pass, <code>1</code>=validation fail, <code>2</code>=spec error, <code>3</code>=runtime error.
+            </p>
 
             <div class="card-links">
               <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs">Documentation</a>
@@ -137,7 +100,63 @@ Exit code: 0</code></pre>
       </div>
     </section>
 
-    <!-- Small clarity/trust row (minimal, enterprise-friendly) -->
+    <!-- HOW IT WORKS (full width = no gap) -->
+    <section class="section" id="how">
+      <div class="container">
+        <h2>How SqlGuard works</h2>
+        <p class="subtle">
+          SqlGuard turns a declarative YAML spec into deterministic CI pass/fail results for SQL behavior.
+        </p>
+
+        <div class="how-grid">
+          <div class="panel how-step">
+            <div class="how-head">
+              <span class="how-title">Step 1 — Declare expectations (YAML)</span>
+              <span class="how-badge">spec</span>
+            </div>
+            <p class="subtle">
+              Describe what must remain true about your database behavior (shape, invariants, permissions).
+            </p>
+            <pre class="code" aria-label="YAML example"><code># sqlguard.yaml (excerpt)
+suites:
+  - name: Orders schema
+    connection: main
+    checks:
+      - type: queryContract
+        sql: SELECT * FROM Orders</code></pre>
+          </div>
+
+          <div class="panel how-step">
+            <div class="how-head">
+              <span class="how-title">Step 2 — Run in CI (CLI)</span>
+              <span class="how-badge">execute</span>
+            </div>
+            <p class="subtle">
+              Run locally or in pipelines. Output is deterministic and machine-readable.
+            </p>
+            <pre class="code" aria-label="CLI example"><code>sqlguard validate-spec --spec sqlguard.yaml
+sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
+          </div>
+
+          <div class="panel how-step">
+            <div class="how-head">
+              <span class="how-title">Step 3 — CI sees pass/fail</span>
+              <span class="how-badge">gate</span>
+            </div>
+            <p class="subtle">
+              Your CI treats it like tests. See <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs#exit-codes">exit codes</a>.
+            </p>
+            <pre class="code" aria-label="CI-style output example"><code>✔ Orders schema
+  ✔ queryContract: Orders columns unchanged
+
+Test Suites: 1 passed, 0 failed
+Exit code: 0</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust row (kept) -->
     <section class="section">
       <div class="container">
         <h2>Designed for platform and backend teams</h2>
@@ -232,7 +251,6 @@ Exit code: 0</code></pre>
   </main>
 
   <script>
-    // tiny helpers (no deps)
     document.getElementById("y").textContent = new Date().getFullYear();
 
     document.querySelectorAll("[data-copy]").forEach(btn => {
@@ -244,7 +262,6 @@ Exit code: 0</code></pre>
           btn.textContent = "Copied";
           setTimeout(() => (btn.textContent = prev), 1200);
         } catch {
-          // fallback: select+copy (rarely needed)
           const ta = document.createElement("textarea");
           ta.value = v;
           document.body.appendChild(ta);
