@@ -38,7 +38,7 @@
         <div class="hero-copy">
           <h1>Deterministic SQL validation for CI.</h1>
           <p class="lead">
-            SqlGuard is a commercial, non-SaaS CLI tool that validates SQL Server behavior after schema or data changes —
+            SqlGuard is a commercial, non-SaaS CLI tool that validates SQL Server behavior in your CI pipeline —
             focused on correctness, security, and regression prevention.
           </p>
 
@@ -106,21 +106,24 @@
 
           <div class="panel how-step">
             <div class="how-head">
-              <span class="how-title">Step 2 — Run in CI (CLI)</span>
+              <span class="how-title">Step 2 — Run in CI (GitHub Actions)</span>
               <span class="how-badge">execute</span>
             </div>
             <p class="subtle">
-              Run locally or in pipelines. Output is deterministic and machine-readable.
+              Add SqlGuard as a step in your CI workflow. Output is deterministic and machine-readable.
             </p>
             <div class="code-wrapper">
-              <button class="code-copy" data-copy="sqlguard validate-spec --spec sqlguard.yaml&#10;sqlguard run --spec sqlguard.yaml --out report.json" type="button" aria-label="Copy code">
+              <button class="code-copy" data-copy="- name: SqlGuard validation&#10;  run: |&#10;    sqlguard validate-spec --spec sqlguard.yaml&#10;    sqlguard run --spec sqlguard.yaml --out report.json" type="button" aria-label="Copy code">
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/>
                   <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/>
                 </svg>
               </button>
-              <pre class="code" aria-label="CLI example"><code>sqlguard validate-spec --spec sqlguard.yaml
-sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
+              <pre class="code" aria-label="GitHub Actions example"><code><span class="comment"># .github/workflows/ci.yml</span>
+- <span class="key">name</span>: <span class="string">SqlGuard validation</span>
+  <span class="key">run</span>: |
+    sqlguard validate-spec --spec sqlguard.yaml
+    sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
             </div>
           </div>
 
@@ -187,8 +190,8 @@ Exit code: 0</code></pre>
           <div class="panel">
             <h3>It is</h3>
             <ul>
-              <li>A deterministic CLI gate for SQL Server / Azure SQL changes</li>
-              <li>Designed for build pipelines and offline execution</li>
+              <li>A deterministic CI gate for SQL Server / Azure SQL changes</li>
+              <li>Designed for CI pipelines (GitHub Actions, Azure DevOps, Jenkins)</li>
               <li>Focused on correctness, security checks, and regression prevention</li>
             </ul>
           </div>
