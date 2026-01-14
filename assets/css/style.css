@@ -267,3 +267,38 @@ code, pre code{ font-family: var(--mono); font-size: 12.5px; }
   gap: 10px;
   flex-wrap:wrap;
 }
+
+/* Minimal additions for the Step 1-2-3 list (keeps site structure unchanged) */
+.steps{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.step{
+  border: 1px solid rgba(48,54,61,0.65);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(13,17,23,0.25);
+}
+.step-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.step-title{
+  font-weight: 700;
+  font-size: 13px;
+}
+.step-meta{
+  font-size: 11px;
+  color: #8b949e;
+  border: 1px solid rgba(48,54,61,0.8);
+  background: rgba(22,27,34,0.7);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}

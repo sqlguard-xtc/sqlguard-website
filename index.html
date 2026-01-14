@@ -7,13 +7,17 @@
 
   <title>SqlGuard</title>
 
+  <!-- Canonical (www is canonical) -->
+  <link rel="canonical" href="https://www.sqlguard.dev/" />
+
   <link rel="icon" type="image/svg+xml" href="assets/img/mark.svg" />
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Social preview (optional but nice) -->
+  <!-- Social preview -->
   <meta property="og:title" content="SqlGuard" />
   <meta property="og:description" content="Deterministic, CI-first CLI validation for SQL Server behavior after schema/data changes." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.sqlguard.dev/" />
 </head>
 
 <body>
@@ -26,6 +30,10 @@
         <span class="brand-name">SqlGuard</span>
       </div>
       <nav class="nav">
+        <a href="#how">How it works</a>
+        <a href="#docs">Docs</a>
+        <a href="#download">Download</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -54,36 +62,106 @@
           </div>
 
           <p class="subtle">
-            Prefer GitHub? Everything publicly visible lives in the
+            Everything public lives in the
             <a href="https://github.com/sqlguard-xtc/sqlguard">sqlguard</a> repository:
             documentation, examples, and release binaries.
           </p>
+
+          <p class="tiny subtle">
+            Tip: start with <a href="#how">How it works</a> — YAML expectations → CLI run → CI pass/fail.
+          </p>
         </div>
 
-        <div class="hero-card" role="region" aria-label="Quick start">
+        <!-- RIGHT CARD: How it works (Step 1-2-3) -->
+        <div class="hero-card" role="region" aria-label="How it works">
           <div class="card">
             <div class="card-head">
-              <span class="card-title">Quick start</span>
-              <span class="badge">CLI</span>
+              <span class="card-title">How it works</span>
+              <span class="badge">Step 1 → 2 → 3</span>
             </div>
 
-            <p class="card-text">
-              Download the latest release, put <code>sqlguard</code> on your PATH, then run:
-            </p>
+            <ol class="steps" id="how" aria-label="SqlGuard workflow">
+              <li class="step">
+                <div class="step-head">
+                  <span class="step-title">Step 1 — Declare expectations (YAML)</span>
+                  <span class="step-meta">spec</span>
+                </div>
+                <p class="card-text">
+                  Describe what must remain true about your database behavior (shape, invariants, permissions).
+                </p>
+                <pre class="code" aria-label="YAML example"><code># sqlguard.yaml (excerpt)
+suites:
+  - name: Orders schema
+    connection: main
+    checks:
+      - type: queryContract
+        sql: SELECT * FROM Orders</code></pre>
+              </li>
 
-            <pre class="code" aria-label="Quick start commands"><code>sqlguard validate-spec --spec sqlguard.yaml
+              <li class="step">
+                <div class="step-head">
+                  <span class="step-title">Step 2 — Run in CI (CLI)</span>
+                  <span class="step-meta">execute</span>
+                </div>
+                <p class="card-text">
+                  Run locally or in pipelines. Output is deterministic and machine-readable.
+                </p>
+                <pre class="code" aria-label="CLI example"><code>sqlguard validate-spec --spec sqlguard.yaml
 sqlguard run --spec sqlguard.yaml --out report.json</code></pre>
+              </li>
 
-            <p class="card-text">
-              Exit codes are stable for CI: <code>0</code>=pass, <code>1</code>=validation fail,
-              <code>2</code>=spec error, <code>3</code>=runtime error.
-            </p>
+              <li class="step">
+                <div class="step-head">
+                  <span class="step-title">Step 3 — CI sees pass/fail</span>
+                  <span class="step-meta">gate</span>
+                </div>
+                <p class="card-text">
+                  SqlGuard exits with stable codes for pipelines. Your CI treats it like tests.
+                  (<a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs#exit-codes">exit codes</a>)
+                </p>
+                <pre class="code" aria-label="CI-style output example"><code>✔ Orders schema
+  ✔ queryContract: Orders columns unchanged
+
+Test Suites: 1 passed, 0 failed
+Exit code: 0</code></pre>
+              </li>
+            </ol>
 
             <div class="card-links">
               <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs">Documentation</a>
               <a href="https://github.com/sqlguard-xtc/sqlguard/tree/main/docs/examples">Examples</a>
               <a href="https://github.com/sqlguard-xtc/sqlguard/releases">Releases</a>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small clarity/trust row (minimal, enterprise-friendly) -->
+    <section class="section">
+      <div class="container">
+        <h2>Designed for platform and backend teams</h2>
+        <div class="grid three">
+          <div class="panel">
+            <h3>Correctness</h3>
+            <ul>
+              <li>Catch unintended behavior changes early</li>
+              <li>Deterministic results for CI</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Security</h3>
+            <ul>
+              <li>Permission regression checks</li>
+              <li>No secrets in output (redaction)</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Pragmatic</h3>
+            <ul>
+              <li>No SaaS, no agents, no dashboards</li>
+              <li>Public docs + private implementation</li>
+            </ul>
           </div>
         </div>
       </div>
