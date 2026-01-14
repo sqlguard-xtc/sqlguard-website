@@ -359,9 +359,32 @@ h3{
   background: #0d1117;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  overflow:auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(48,54,61,0.6) transparent;
 }
-code, pre code{ font-family: var(--mono); font-size: 12.5px; }
+.code::-webkit-scrollbar{
+  height: 6px;
+}
+.code::-webkit-scrollbar-track{
+  background: transparent;
+}
+.code::-webkit-scrollbar-thumb{
+  background: rgba(48,54,61,0.6);
+  border-radius: 3px;
+}
+.code::-webkit-scrollbar-thumb:hover{
+  background: rgba(48,54,61,0.8);
+}
+code, pre code{ 
+  font-family: var(--mono); 
+  font-size: 12.5px;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
 
 /* Syntax highlighting */
 .comment{ color: #6e7681; }
@@ -407,6 +430,8 @@ code, pre code{ font-family: var(--mono); font-size: 12.5px; }
   border-radius: var(--radius);
   padding: 14px;
   box-shadow: var(--shadow);
+  min-width: 0;
+  overflow: hidden;
 }
 .panel ul{
   margin: 0;
@@ -448,7 +473,12 @@ code, pre code{ font-family: var(--mono); font-size: 12.5px; }
   margin-top: 14px;
 }
 @media (max-width: 900px){
-  .how-grid{ grid-template-columns: 1fr; }
+  .how-grid{ 
+    grid-template-columns: 1fr;
+  }
+}
+.how-step{
+  min-width: 0;
 }
 .how-step .code{
   margin-top: 10px;
